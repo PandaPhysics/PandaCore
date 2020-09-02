@@ -160,6 +160,11 @@ void JERReader::getStochasticSmear(double pt, double eta, double rho, double &sm
 	    sf_scaleUp = 0.;
 	    sf_scaleDown = 0.;
 	  }
+//debug only
+         if(pt>59.726&&pt<59.727){
+           cout <<"jet resolution check\n" << "pt=" << pt <<" eta=" << eta << " rho=" << rho << " res=" << sigma_res << endl;
+          cout << "toy=" << toy << " sf_scale=" << sf_scale << endl;
+          }
 	}
 
 	smear = 1 + toy*sf_scale; 

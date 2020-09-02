@@ -42,12 +42,14 @@ int dsign(double x);
  */
 double Mxx(double pt1, double eta1, double phi1, double m1, double pt2, double eta2, double phi2, double m2);
 
+double tightIDsf(int bit, float sf1, float sf2);
 double MT(double pt1, double phi1, double pt2, double phi2);
 
 /**
  * \brief Signed delta-phi
  */
 double SignedDeltaPhi(double phi1, double phi2);
+double DeltaPhi(double phi1, double phi2);
 
 /**
  * \brief Calculates the delta-R-squared metric
@@ -63,7 +65,25 @@ float sphericity(double r,  std::vector<TLorentzVector> & inputVectors_);
  * \brief Exponential times erf, aka CMSShape
  */
 double ExpErf(double x, double a, double b, double c);
+double Expnom(double x, double a, double b, double c);
 
+double metsf(double pt);
+double metsf2018(double pt);
+double fr_pho(double pt);
+double sfpho(double eta);
+double sfphonew(double eta);
+double sfpho2018(double eta);
+double photrigsf(double pt);
+double photrigsf2018(double pt);
+double sfwjets(double pt);
+double sfgjets(double pt);
+double sfzjets(double pt);
+double sfzvv(double pt);
+double combinedPhi(double pt1, double phi1, double pt2, double phi2);
+double combinedPt(double pt1, double phi1, double pt2, double phi2);
+
+double tauSF(double x, int i=0);
+double eleunc(double pt, double eta,int id=0);
 /**
  * \brief in-place insertion sort
  */

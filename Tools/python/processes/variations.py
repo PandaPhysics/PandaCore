@@ -21,6 +21,8 @@ higgs_datasets = [
 
 
 processes = {}
+'''
+
 for bins in zip(qcd_htbins[:-1],qcd_htbins[1:]):
     name = 'QCD_HT%sto%s'%bins 
     xsec = SM.processes[name+'_TuneCUETP8M1_13TeV-madgraphMLM-pythia8'][-1]
@@ -44,3 +46,4 @@ for dataset in higgs_datasets:
     for v in _variations:
         vname = dataset + '_' + v
         processes[vname] = (vname, 'MC', xsec)
+'''
