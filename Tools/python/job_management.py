@@ -147,7 +147,7 @@ BOSCOCluster == "ce03.cmsaf.mit.edu" && BOSCOGroup == "bosco_cms" && HAS_CVMFS_c
             ),
             "AcctGroup" : "analysis",
             "AccountingGroup" : "analysis.USER",
-            "X509UserProxy" : "/tmp/x509up_u2268",
+            "X509UserProxy" : "/tmp/x509up_uUID",
             "OnExitHold" : classad.ExprTree("( ExitBySignal == true ) || ( ExitCode != 0 )"),
             "In" : "/dev/null",
             "TransferInput" : "WORKDIR/cmssw.tgz,WORKDIR/skim.py",
@@ -167,7 +167,6 @@ BOSCOCluster == "ce03.cmsaf.mit.edu" && BOSCOGroup == "bosco_cms" && HAS_CVMFS_c
     else:
         logger.error('job_management.setup_schedd','Unknown config "%s"'%(':'.join(config)))
         raise ValueError
-
 
 schedd_config = getenv('SUBMIT_CONFIG')
 schedd_config = 'T3' if not schedd_config else schedd_config
@@ -488,6 +487,8 @@ class Submission(_BaseSubmission):
         myinfo('Submission.execute','Submitting %i jobs!'%(len(procs)))
         self.submission_time = time.time()
         results = []
+
+        #print cluster_ad
         self.cluster_id = self.schedd.submitMany(cluster_ad, procs, spool=should_spool, ad_results=results)
         if should_spool:
             myinfo('Submission.execute','Spooling inputs...')

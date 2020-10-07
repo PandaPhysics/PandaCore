@@ -11,12 +11,10 @@ void ROCTool::InitCanvas(double x1, double y1, double x2, double y2, bool isPrel
   c = new GraphDrawer();
   c->SetTDRStyle();
   c->SetGrid();
-  /*
   if (isPrelim)
     c->AddCMSLabel(0.15,0.94," Simulation Preliminary"); 
   else
     c->AddCMSLabel(0.15,0.94," Simulation"); 
-  */
   c->AddSqrtSLabel();
   if (doLogy)
     c->Logy();
@@ -86,7 +84,7 @@ TMarker *ROCTool::CalcWP(TTree *ts, TTree *tb, int color, TString sigcut, TStrin
 }
 
 
-TGraph *ROCTool::CalcROC(TH1F *hs, TH1F *hb, TString title, unsigned int color, int style, int nCuts) {
+TGraph *ROCTool::CalcROC(TH1F *hs, TH1F *hb, const char *title, unsigned int color, int style, int nCuts) {
   if (hs && hb)
     SetHists(hs,hb);
   TGraph *graph;
@@ -95,9 +93,6 @@ TGraph *ROCTool::CalcROC(TH1F *hs, TH1F *hb, TString title, unsigned int color, 
   else
     graph = CalcROC2Cut();
 
-  if (title.Length() == 0)
-    title = sigHist->GetXaxis()->GetTitle();
-
   if (c) {
     c->AddGraph(graph,title,color,style,"C");
   }
@@ -105,7 +100,7 @@ TGraph *ROCTool::CalcROC(TH1F *hs, TH1F *hb, TString title, unsigned int color, 
   return graph;
 }
 
-TGraph *ROCTool::CalcROC(TString hspath, TString hbpath, TString title, unsigned int color, int style, int nCuts) {
+TGraph *ROCTool::CalcROC(TString hspath, TString hbpath, const char *title, unsigned int color, int style, int nCuts) {
   SetHists(hspath,hbpath);
   return CalcROC(0,0,title,color,style,nCuts);
 }

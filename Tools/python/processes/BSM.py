@@ -280,4 +280,12 @@ processes =    {
     'TTbarDMJets_scalar_Mchi-50_Mphi-300' : ('TTbarDMJets_scalar_Mchi-50_Mphi-300','MC',1),
     'TTbarDMJets_scalar_Mchi-50_Mphi-50' : ('TTbarDMJets_scalar_Mchi-50_Mphi-50','MC',1),
     'TTbarDMJets_scalar_Mchi-50_Mphi-95' : ('TTbarDMJets_scalar_Mchi-50_Mphi-95','MC',1),
+
+    'DarkPhotonVBFHM125' : ('DarkPhotonVBFHM125','MC',1),
+    'DarkPhotonVBFHM150' : ('DarkPhotonVBFHM150','MC',1),
+    'DarkPhotonVBFHM200' : ('DarkPhotonVBFHM200','MC',1),
+    'DarkPhotonVBFHM300' : ('DarkPhotonVBFHM300','MC',1),
+    'DarkPhotonVBFHM500' : ('DarkPhotonVBFHM500','MC',1),
+    'DarkPhotonVBFHM800' : ('DarkPhotonVBFHM800','MC',1),
+    'DarkPhotonVBFHM1000' : ('DarkPhotonVBFHM1000','MC',1),
 }

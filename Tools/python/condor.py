@@ -6,6 +6,7 @@ try:
     import htcondor
     import classad
 except ImportError:
+
     import imp
     local_path = ['/usr/lib64/python2.6/site-packages/']
     def _get_module(name):

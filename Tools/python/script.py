@@ -23,8 +23,6 @@ class ArgOpt(dict):
 STORE_TRUE = ArgOpt({'action':'store_true'})
 STORE_FALSE = ArgOpt({'action':'store_false'})
 MANY = ArgOpt({'nargs':'+'})
-FLOAT = ArgOpt({'type':float})
-INT = ArgOpt({'type':int})
 
 def parse(*args):
     for a in args:

@@ -64,7 +64,7 @@ from logging import *
 
 def load_lib(libpath):
     logger.info('PandaCore.Utils.load','Loading %s'%libpath)
-    return root.gSystem.Load(libpath)
+    root.gSystem.Load(libpath)
 
 
 def Load(request):
@@ -80,30 +80,21 @@ def Load(request):
         if l.name==request or request in l.objects:
             requested_lib = l
             break
-    else:
-        requested_lib = Library(request, [])
 
     if requested_lib in _loaded:
         if DEBUG:
-            logger.warning('PandaCore.Utils.load','Requested %s has already been loaded in %s'%(request, requested_lib.name))
+            logger.warning('PandaCore.Utils.load','Requested %s has already been _loaded in %s'%(request, requested_lib.name))
         return
 
     if not requested_lib:
-        logger.error('PandaCore.Utils.load','Could not understand lib %s'%request)
+        logger.error('PandaCore.Utils.load','Could not load lib %s'%request)
         raise Exception('LoadError')
 
-    r = 0
     for d in requested_lib.deps:
         if 'CMSSW' in d:
-            r = max(r, load_lib(d))
+            load_lib(d)
         else:
-            r = max(r, load_lib('lib'+d+'.so'))
+            load_lib('lib'+d+'.so')
 
     _loaded.append(requested_lib)
-    r = max(r, load_lib('lib'+requested_lib.name+'.so'))
-
-    if r != 0:
-        logger.error('PandaCore.Utils.load', 'Could not load lib %s, error code=%i'%(requested_lib.name, r))
-        raise Exception('LoadError')
-
-load = Load 
+    load_lib('lib'+requested_lib.name+'.so')

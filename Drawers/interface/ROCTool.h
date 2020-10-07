@@ -19,8 +19,8 @@ class ROCTool {
     void SetHists(TH1F *hs, TH1F *hb) { sigHist = hs; bgHist = hb; }
     void SetHists(TString hspath, TString hbpath) { SetHists((TH1F*)centralFile->FindObjectAny(hspath),
                                                              (TH1F*)centralFile->FindObjectAny(hbpath)); }
-    TGraph *CalcROC(TH1F *hs, TH1F *hb, TString title="", unsigned int color=1, int style=1, int nCuts=1); // 1 or 2
-    TGraph *CalcROC(TString hspath, TString hbpath, TString title="", unsigned int color=1, int style=1, int nCuts=1);
+    TGraph *CalcROC(TH1F *hs, TH1F *hb, const char *title=0, unsigned int color=1, int style=1, int nCuts=1); // 1 or 2
+    TGraph *CalcROC(TString hspath, TString hbpath, const char *title=0, unsigned int color=1, int style=1, int nCuts=1);
     TGraph *CalcROC1Cut();
     TGraph *CalcROC2Cut();
     TMarker *CalcWP(TTree *ts, TTree *tb, int color, TString sigcut, TString sigweight, TString bgcut, TString bgweight, TString cut, TString title);
